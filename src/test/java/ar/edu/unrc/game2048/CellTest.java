@@ -37,5 +37,74 @@ public void cellWithEqualsValueJoin(){
     assertEquals(expected, result);
 }
 
+// 
+// ------ Cell.isEmpty() ------
+// 
+
+@Test
+public void testCellIsEmpty(){
+    // arrange
+    Cell cell = new Cell(0);
+    // act
+    boolean result = cell.isEmpty();
+
+    // assert
+    assertTrue(result);
+}
+
+@Test
+public void testCellIsNotEmpty(){
+    // arrange
+    Cell cell = new Cell(3);
+    // act
+    boolean result = cell.isEmpty();
+
+    // assert
+    assertFalse(result);
+}
+
+// 
+// ------ Cell.mergeWith(Cell other) ------
+// 
+
+@Test
+public void testCellMergeWith(){
+    // arrange
+    Cell cell = new Cell(4);
+    Cell otherCell = new Cell(4);
+    // act
+    Cell result = cell.mergeWith(otherCell);
+
+    // assert
+    assertEquals(8, result.getValue());
+}
+
+// 
+// ------ Cell.equals(Object o) ------
+// 
+
+@Test
+public void testCellEquals(){
+    // arrange
+    Cell cell = new Cell(4);
+    Cell otherCell = new Cell(4);
+    // act
+    boolean result = cell.equals(otherCell);
+
+    // assert
+    assertTrue(result);
+}
+
+@Test
+public void testCellNotEquals(){
+    // arrange
+    Cell cell = new Cell(4);
+    Cell otherCell = new Cell(8);
+    // act
+    boolean result = cell.equals(otherCell);
+
+    // assert
+    assertFalse(result);
+}
 
 }
