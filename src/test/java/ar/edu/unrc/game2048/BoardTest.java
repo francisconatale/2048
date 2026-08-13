@@ -1,13 +1,10 @@
 package ar.edu.unrc.game2048;
-import ar.edu.unrc.game2048.Cell;
 
 import ar.edu.unrc.game2048.Board.*;
 
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
