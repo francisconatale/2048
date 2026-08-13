@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BoardTest {
@@ -15,17 +16,35 @@ public class BoardTest {
     @Test
     public void lostBoardTest() {
         Board board = new Board(4, true);
+        seederLostBoard(board);
+        assertTrue(board.isLosingBoard());
+        }
+
+    @Test
+    public void hasEmptyCellsInBoardTest() {
+        Board board = new Board(4, true);
+        board.setCell(0,0, listOfValueCells.get(2));
+        assertTrue(board.hasEmptyCells());
+    }
+
+    @Test
+    public void NotHasEmptyCellsInBoardTest() {
+        Board board = new Board(4, true);
+        seederLostBoard(board);
+        assertFalse(board.hasEmptyCells());
+    }
+
+    private void seederLostBoard(Board board) {
         int m = board.getSize();
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < m; j++) {
                 List<Integer> neighbor = valueOfNeighborCells(new Tuple(i,j), board);
                 Integer unusedNeighborValue = unusedNeighborValue(listOfValueCells, neighbor);
                 board.setCell(i,j, new Cell(unusedNeighborValue));
-                }
             }
-        assertTrue(board.isLosingBoard());
         }
 
+    }
     private List<Integer> valueOfNeighborCells(Tuple actual, Board board){
         List<Integer> result = new LinkedList<>();
         List<Tuple> vectors = new LinkedList<>(List.of(new Tuple(0, 1), new Tuple(1, 0), new Tuple(-1, 0), new Tuple(0, -1)));
