@@ -45,7 +45,7 @@ public class Board {
      * Creates a new board of the default size (4x4) with two random tiles.
      */
     public Board() {
-        this(DEFAULT_SIZE);
+        this(DEFAULT_SIZE, false);
     }
 
     /**
@@ -54,7 +54,7 @@ public class Board {
      * @param size the board size (must be > 0)
      * @throws IllegalArgumentException if size <= 0
      */
-    public Board(int size) {
+    public Board(int size, boolean determinist) {
         if (size <= 0) {
             throw new IllegalArgumentException("Board size must be positive: " + size);
         }
@@ -62,9 +62,14 @@ public class Board {
         this.grid = new Cell[size][size];
         this.score = 0;
         initializeEmpty();
-        addRandomTile();
-        addRandomTile();
+        if(!determinist) {
+            addRandomTile();
+            addRandomTile();
+        }
+
     }
+
+
 
     /**
      * Copy constructor - creates a deep copy of another board.
@@ -148,7 +153,7 @@ public class Board {
      * @param col the column index
      * @throws IndexOutOfBoundsException if the position is out of bounds
      */
-    private void validatePosition(int row, int col) {
+    public void validatePosition(int row, int col) {
         if (row < 0 || row >= size || col < 0 || col >= size) {
             throw new IndexOutOfBoundsException(
                     String.format("Position (%d, %d) is out of bounds for board size %d",
@@ -487,7 +492,7 @@ public class Board {
             return false;
         }
 
-        // Choose random position
+        // Choose random positiom
         int randomIndex = (int) (Math.random() * empty.size());
         Position pos = empty.stream().skip(randomIndex).findFirst().get();
 
