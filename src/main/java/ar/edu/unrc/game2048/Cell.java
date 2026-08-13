@@ -85,7 +85,6 @@ public final class Cell {
         }
         return new Cell(this.value * 2);
     }
-
     /**
      * Compares this cell with another object for equality.
      * Two cells are equal if they have the same value.
