@@ -106,4 +106,32 @@ public void testCellNotEquals(){
     assertFalse(result);
 }
 
+    @Test
+    public void testCellNotEqualsByHash(){
+        // arrange
+        Cell cell = new Cell(4);
+        Cell otherCell = new Cell(8);
+
+        // act
+        int hashCell = cell.hashCode();
+        int hashOtherCell = otherCell.hashCode();
+
+        // assert
+        assertNotEquals(hashCell, hashOtherCell);
+    }
+
+    @Test
+    public void testCellEqualsByHash(){
+        // arrange
+        Cell cell = new Cell(4);
+        Cell otherCell = new Cell(4);
+
+        // act
+        int hashCell = cell.hashCode();
+        int hashOtherCell = otherCell.hashCode();
+
+        // assert
+        assertEquals(hashCell, hashOtherCell);
+    }
+
 }

@@ -162,6 +162,7 @@ public class Board {
         }
     }
 
+
     /**
      * Gets all empty cells on the board.
      *
