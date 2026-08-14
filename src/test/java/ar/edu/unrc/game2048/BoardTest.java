@@ -13,29 +13,77 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BoardTest {
     Seeder seeder = new Seeder();
+
     @Test
     public void lostBoardTest() {
         Board board = new Board(4, true);
         seeder.seederLostBoard(board);
         assertTrue(board.isLosingBoard());
-        }
+    }
 
     @Test
     public void hasEmptyCellsInBoardTest() {
         Board board = new Board(4, true);
-        board.setCell(0,0, new Cell(2));
+        seeder.seederBoard(board, 1);
+        System.out.println(board.toString());
         assertTrue(board.hasEmptyCells());
+    }
+
+
+    @Test
+    public void testMoveUpInGame(){
+      // arrange
+     Board actual_board = new Board(4, true);
+     actual_board.setCell(0,0, new Cell(2));
+     actual_board.setCell(1,0, new Cell(2));
+     Board expected_board = new Board(4, true);
+     expected_board.setCell(0,0,new Cell(4));
+     expected_board.setScore(4); // when two cells are merged, the score increases
+
+     // act
+     actual_board.moveUp();
+
+     // assert
+      assertEquals(actual_board, expected_board);
+    }
+
+    @Test
+    public void testMoveLeftInGame(){
+        // arrange
+        Board actual_board = new Board(4, true);
+        actual_board.setCell(0,1, new Cell(2));
+        actual_board.setCell(0,0, new Cell(2));
+        Board expected_board = new Board(4, true);
+        expected_board.setCell(0,0,new Cell(4));
+        expected_board.setScore(4); // when two cells are merged, the score increases
+
+        // act
+        actual_board.moveLeft();
+
+        // assert
+        assertEquals(actual_board, expected_board);
+    }
+
+    @Test
+    public void maximumScoreOfBoardTest() {
+        Board board = new Board(4,true);
+        board.setCell(0,  0,new Cell(2));
+        board.setCell(0,1, new Cell(2));
+        board.moveLeft();
+        int scoreExpected = 4;
+        assertEquals(scoreExpected, board.getScore());
     }
 
     @Test
     public void notHasEmptyCellsInBoardTest() {
         Board board = new Board(4, true);
-        seeder.seederLostBoard(board);
+        int n = board.getSize();
+        seeder.seederBoard(board, n * n);
         assertFalse(board.hasEmptyCells());
     }
 
     @Test
-    public void testBoardGetCell(){
+    public void testBoardGetCell() {
         // arrange
         Board board = new Board();
         // act
@@ -46,19 +94,15 @@ public class BoardTest {
     }
 
     @Test
-    public void testBoardIndexOutOfBoundsException(){
+    public void testBoardIndexOutOfBoundsException() {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             Board board = new Board();
             board.getCell(-1, 0);
         });
     }
 
-    // 
-    // ------ Board.getEmptyPositions() ------
-    // 
-
     @Test
-    public void testBoardGetEmptyPositions(){
+    public void testBoardGetEmptyPositions() {
         // arrange
         Board board = new Board();
 
@@ -68,6 +112,7 @@ public class BoardTest {
         // assert
         assertNotNull(emptyPositions);
     }
+
 }
 
 // Board.isWinningBoard()

@@ -4,9 +4,7 @@ import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Board.Position;
 import ar.edu.unrc.game2048.Cell;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Seeder {
 
@@ -40,6 +38,23 @@ public class Seeder {
         }
     }
 
+    public void seederBoard(Board board, int expectedCells){
+        Set<Position> positionsToFill = new LinkedHashSet<>();
+        while(positionsToFill.size() < expectedCells){
+            int row = random.nextInt(board.getSize());
+            int col = random.nextInt(board.getSize());
+            positionsToFill.add(new Position(row,col));
+        }
+        for(Position position : positionsToFill) {
+        board.setCell(position.row, position.col, new Cell(getRandomPossibleValue()));
+        }
+    }
+
+    private int getRandomPossibleValue(){
+        return POSSIBLE_VALUES.get(random.nextInt(POSSIBLE_VALUES.size()));
+    }
+
+
     private List<Integer> valueOfNeighborCells(Position position, Board board) {
         List<Integer> values = new LinkedList<>();
 
@@ -47,9 +62,9 @@ public class Seeder {
             int row = position.row + direction.row;
             int col = position.col + direction.col;
 
-            if (isValidPosition(row, col, board.getSize())) {
+            if (isValidPosition(row, col, board.getSize()))
                 values.add(board.getCell(row, col).getValue());
-            }
+
         }
 
         return values;

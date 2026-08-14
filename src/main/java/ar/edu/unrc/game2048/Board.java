@@ -47,6 +47,7 @@ public class Board {
     public Board() {
         this(DEFAULT_SIZE, false);
     }
+    private boolean determinist;
 
     /**
      * Creates a new board of the specified size with two random tiles.
@@ -62,6 +63,7 @@ public class Board {
         this.grid = new Cell[size][size];
         this.score = 0;
         initializeEmpty();
+        this.determinist = determinist;
         if(!determinist) {
             addRandomTile();
             addRandomTile();
@@ -298,7 +300,7 @@ public class Board {
         }
 
         boolean moved = !this.equals(previous);
-        if (moved) {
+        if (moved && !determinist) {
             addRandomTile(); // Add new random tile after successful move
         }
         return moved;
@@ -414,7 +416,7 @@ public class Board {
         }
 
         boolean moved = !this.equals(previous);
-        if (moved) {
+        if (moved && !determinist) {
             addRandomTile(); // Add new random tile after successful move
         }
         return moved;
@@ -555,6 +557,10 @@ public class Board {
         }
         sb.append("\n");
         return sb.toString();
+    }
+
+    public void setScore(int i) {
+        score = i;
     }
 
     // ==================== INNER CLASSES ====================
