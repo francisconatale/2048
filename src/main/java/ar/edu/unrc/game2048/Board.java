@@ -318,7 +318,7 @@ public class Board {
         for (int col = 0; col < size; col++) {
             // Create a list of cells from bottom to top (reverse order)
             List<Cell> column = new ArrayList<>();
-            for (int row = size - 1; row > 0; row--) {
+            for (int row = size - 1; row >= 0; row--) { //
                 column.add(grid[row][col]);
             }
 
@@ -345,7 +345,6 @@ public class Board {
                     i++;
                 }
             }
-
             // Pad with empty cells
             while (merged.size() < size) {
                 merged.add(Cell.EMPTY);
@@ -358,7 +357,7 @@ public class Board {
         }
 
         boolean moved = !this.equals(previous);
-        if (moved) {
+        if (moved && !determinist) {
             addRandomTile(); // Add new random tile after successful move
         }
         return moved;
