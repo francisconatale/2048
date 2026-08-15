@@ -26,4 +26,24 @@ public class RegressionGameTest {
 
         assertEquals(expectedBoard, initialBoard);
     }
+
+    public void regressionTestInMoveUpWithBoardNotTrivial(){
+        String initialBoardToParse =
+                        "16 4 0 0\n" +
+                        "4 0 0 0\n" +
+                        "8 2 0 0\n" +
+                        "0 2 0 0";
+        Board initialBoard = BoardParser.parse(initialBoardToParse);
+        String expectedBoardToParse =
+                "16 4 0 0\n" +
+                "4 4 0 0\n" +
+                "8 0 0 0\n" +
+                "0 0 0 0";
+        Board expectedBoard = BoardParser.parse(expectedBoardToParse);
+        expectedBoard.setScore(4);
+
+        initialBoard.moveDown();
+
+        assertEquals(expectedBoard, initialBoard);
+    }
 }
