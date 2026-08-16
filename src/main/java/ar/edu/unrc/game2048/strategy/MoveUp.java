@@ -1,25 +1,25 @@
 package ar.edu.unrc.game2048.strategy;
 
+import ar.edu.unrc.game2048.Board;
+import ar.edu.unrc.game2048.Cell;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MoveUp extends Move {
 
-    public boolean moveUp() {
-        Board previous = new Board(this);
-
+    @Override
+    public int execute(Board board, Cell[][] grid) {
+        int size = grid.length;
         // For each column, slide up
+        int score = 0;
+
         for (int col = 0; col < size; col++) {
             // Create a list of cells from top to bottom
-            List<Cell> column = new ArrayList<>();
-            for (int row = 0; row < size; row++) {
-                column.add(grid[row][col]);
-            }
+            List<Cell> column = getColumn(col, grid);
 
-            // Remove empty cells (slide up)
-            List<Cell> nonEmpty = new ArrayList<>();
-            for (Cell cell : column) {
-                if (!cell.isEmpty()) {
-                    nonEmpty.add(cell);
-                }
-            }
+            List<Cell> nonEmpty = removeEmptyCells(column);
+
 
             // Merge adjacent equal cells
             List<Cell> merged = new ArrayList<>();
@@ -47,13 +47,6 @@ public class MoveUp extends Move {
                 grid[row][col] = merged.get(row);
             }
         }
-
-        boolean moved = !this.equals(previous);
-        if (moved && !determinist) {
-            addRandomTile(); // Add new random tile after successful move
+        return score;
         }
-        return moved;
     }
-
-
-}

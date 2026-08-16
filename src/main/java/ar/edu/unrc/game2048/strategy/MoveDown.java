@@ -16,7 +16,7 @@ import java.util.List;
    int size = board.getSize();
    int score = 0;
    for (int col = 0; col < size; col++) {
-    List<Cell> column = getColumn(col, grid);
+    List<Cell> column = getColumn(col, grid).reversed();
     List<Cell> nonEmpty = removeEmptyCells(column);
     List<Cell> merged = new LinkedList<>();
     int i = 0;
@@ -37,6 +37,7 @@ import java.util.List;
     for (int row = size - 1; row >= 0; row--) {
         grid[row][col] = merged.get(size - 1 - row); }
    }
+
    return score;
   }
  }
