@@ -2,13 +2,14 @@ package ar.edu.unrc.game2048.strategy;
 
 import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
+import ar.edu.unrc.game2048.Score;
 
 import javax.swing.*;
 import java.util.*;
 
 public abstract class Move {
 
-public abstract int execute(Board board, Cell[][] grid, int score);
+public abstract void execute(Board board, Cell[][] grid, Score score);
 
 public List<Cell> getColumn(int column, Cell[][] grid) {
     List<Cell> result = new ArrayList<>();
@@ -36,14 +37,14 @@ public List<Cell> getRow(int row, Cell[][] grid){
         }
     }
 
-    public List<Cell> mergeCells(List<Cell> cellsToMerge, int score) {
+    public List<Cell> mergeCells(List<Cell> cellsToMerge, Score score) {
         List<Cell> merged = new LinkedList<>();
         int i = 0;
         while (i < cellsToMerge.size()) {
             if (i + 1 < cellsToMerge.size() && cellsToMerge.get(i).canMergeWith(cellsToMerge.get(i + 1))) {
                 Cell mergedCell = cellsToMerge.get(i).mergeWith(cellsToMerge.get(i + 1));
                 merged.add(mergedCell);
-                score += mergedCell.getValue();
+                score.increaseScore(mergedCell.getValue());
                 i += 2;
             } else {
                 merged.add(cellsToMerge.get(i));
@@ -54,7 +55,7 @@ public List<Cell> getRow(int row, Cell[][] grid){
     }
 
 public List<Cell> removeEmptyCells(List<Cell> cells){
-    return cells.stream().filter(Cell::isEmpty).toList();
+    return cells.stream().filter(c -> !c.isEmpty()).toList();
 }
 
 }

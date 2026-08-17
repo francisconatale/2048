@@ -44,7 +44,7 @@ public class Board {
     /**
      * Game accumulated score.
      */
-    private int score;
+    private Score score;
 
     /**
      * Creates a new board of the default size (4x4) with two random tiles.
@@ -66,7 +66,7 @@ public class Board {
         }
         this.size = size;
         this.grid = new Cell[size][size];
-        this.score = 0;
+        this.score = new Score(0);
         initializeEmpty();
         this.determinist = determinist;
         if(!determinist) {
@@ -91,6 +91,8 @@ public class Board {
 
         return true;
     }
+
+    public Cell[][] getGrid(){ return grid; }
 
 
 
@@ -136,7 +138,7 @@ public class Board {
      * @return the score
      */
     public int getScore() {
-        return score;
+        return score.getScore();
     }
 
     /**
@@ -282,7 +284,7 @@ public class Board {
         if (o == null || getClass() != o.getClass()) return false;
         Board board = (Board) o;
         return size == board.size &&
-                score == board.score &&
+                score.getScore() == board.score.getScore() &&
                 Arrays.deepEquals(grid, board.grid);
     }
 
@@ -298,7 +300,7 @@ public class Board {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Score: ").append(score).append("\n");
+        sb.append("Score: ").append(score.getScore()).append("\n");
         for (int r = 0; r < size; r++) {
             sb.append("+");
             for (int c = 0; c < size; c++) {
@@ -320,10 +322,6 @@ public class Board {
         return sb.toString();
     }
 
-    public void setScore(int i) {
-        score = i;
-    }
-
     public boolean move(Direction direction) {
         Board previous = new Board(this);
         Move move = moveFactory.create(direction);
@@ -334,6 +332,8 @@ public class Board {
         }
         return moved;
     }
+
+    public void setScore(int value){ score.setScore(value);}
 
     /**
      * Represents a direction on the board.
@@ -353,6 +353,7 @@ public class Board {
             this.row = row;
             this.col = col;
         }
+
 
         @Override
         public boolean equals(Object o) {
