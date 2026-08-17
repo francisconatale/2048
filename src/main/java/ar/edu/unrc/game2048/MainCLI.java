@@ -49,10 +49,10 @@ public class MainCLI {
             
             boolean moved = false;
             switch (input) {
-                case "W": moved = board.moveUp(); break;
-                case "S": moved = board.moveDown(); break;
-                case "A": moved = board.moveLeft(); break;
-                case "D": moved = board.moveRight(); break;
+                case "W": moved = board.move(Board.Direction.UP); break;
+                case "S": moved = board.move(Board.Direction.DOWN); break;
+                case "A": moved = board.move(Board.Direction.LEFT); break;
+                case "D": moved = board.move(Board.Direction.RIGHT); break;
                 default: 
                     System.out.println("Invalid input! Use W, A, S, D, or Q.");
                     continue;

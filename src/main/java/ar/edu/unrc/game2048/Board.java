@@ -1,5 +1,9 @@
 package ar.edu.unrc.game2048;
 
+import ar.edu.unrc.game2048.strategy.Move;
+import ar.edu.unrc.game2048.strategy.MoveFactory;
+
+import java.awt.font.TextHitInfo;
 import java.util.*;
 
 /**
@@ -15,7 +19,7 @@ import java.util.*;
  * Thread-safety: This class is not thread-safe.
  */
 public class Board {
-
+    public MoveFactory moveFactory = new MoveFactory();
     /**
      * Board default number of rows/columns (4 x 4)
      */
@@ -254,6 +258,7 @@ public class Board {
         return true;
     }
 
+
     /**
      * Checks if the board is full (no empty cells).
      *
@@ -317,6 +322,17 @@ public class Board {
 
     public void setScore(int i) {
         score = i;
+    }
+
+    public boolean move(Direction direction) {
+        Board previous = new Board(this);
+        Move move = moveFactory.create(direction);
+        move.execute(this, grid, score);
+        boolean moved = !this.equals(previous);
+        if (moved && !determinist) {
+            addRandomTile();
+        }
+        return moved;
     }
 
     /**
