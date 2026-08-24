@@ -1,0 +1,10 @@
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/Board.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/Cell.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/MainCLI.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/Score.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/strategy/Move.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/strategy/MoveDown.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/strategy/MoveFactory.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/strategy/MoveLeft.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/strategy/MoveRight.java
+/home/francisco/seminario_cs/basic-design-implementation-and-testing-assignment-natale-pesce/src/main/java/ar/edu/unrc/game2048/strategy/MoveUp.java

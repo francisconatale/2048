@@ -41,7 +41,7 @@ public class BoardTest {
      expected_board.setScore(4); // when two cells are merged, the score increases
 
      // act
-     actual_board.moveUp();
+     actual_board.move(Direction.UP);
 
      // assert
       assertEquals(actual_board, expected_board);
@@ -58,7 +58,7 @@ public class BoardTest {
         expected_board.setScore(4); // when two cells are merged, the score increases
 
         // act
-        actual_board.moveLeft();
+        actual_board.move(Direction.LEFT);
 
         // assert
         assertEquals(actual_board, expected_board);
@@ -69,7 +69,7 @@ public class BoardTest {
         Board board = new Board(4,true);
         board.setCell(0,  0,new Cell(2));
         board.setCell(0,1, new Cell(2));
-        board.moveLeft();
+        board.move(Direction.LEFT);
         int scoreExpected = 4;
         assertEquals(scoreExpected, board.getScore());
     }

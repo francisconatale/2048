@@ -22,7 +22,7 @@ public class RegressionGameTest {
         Board expectedBoard = BoardParser.parse(expectedBoardToParse);
         expectedBoard.setScore(4);
 
-        initialBoard.moveDown();
+        initialBoard.move(Board.Direction.DOWN);
 
         assertEquals(expectedBoard, initialBoard);
     }
@@ -42,7 +42,7 @@ public class RegressionGameTest {
         Board expectedBoard = BoardParser.parse(expectedBoardToParse);
         expectedBoard.setScore(4);
 
-        initialBoard.moveDown();
+        initialBoard.move(Board.Direction.DOWN);
 
         assertEquals(expectedBoard, initialBoard);
     }
