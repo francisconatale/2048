@@ -38,6 +38,7 @@ public void cellWithEqualsValueJoin(){
 
 // 
 // ------ Cell.isEmpty() ------
+// Verifica que el metodo isEmpty() de la clase Cell devuelva true si la celda esta vacia
 // 
 
 @Test
@@ -50,6 +51,11 @@ public void testCellIsEmpty(){
     // assert
     assertTrue(result);
 }
+
+// 
+// ------ Cell.isNotEmpty() ------
+// Verifica que el metodo isEmpty() de la clase Cell devuelva false si la celda esta vacia
+// 
 
 @Test
 public void testCellIsNotEmpty(){
@@ -64,6 +70,7 @@ public void testCellIsNotEmpty(){
 
 // 
 // ------ Cell.mergeWith(Cell other) ------
+// Verifica que el metodo mergeWith() de la clase Cell funcione correctamente al unir dos celdas con el mismo valor
 // 
 
 @Test
@@ -80,6 +87,8 @@ public void testCellMergeWith(){
 
 // 
 // ------ Cell.equals(Object o) ------
+// Verifica que el metodo equals() de la clase Cell funcione correctamente
+// (caso positivo: dos celdas con el mismo valor son iguales)
 // 
 
 @Test
@@ -93,6 +102,12 @@ public void testCellEquals(){
     // assert
     assertTrue(result);
 }
+
+// 
+// ------ Cell.notEquals() ------
+// Verifica que el metodo equals() de la clase Cell funcione correctamente
+// (caso negativo: dos celdas con valores diferentes no son iguales)
+// 
 
 @Test
 public void testCellNotEquals(){
