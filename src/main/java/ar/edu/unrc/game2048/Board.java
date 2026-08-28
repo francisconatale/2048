@@ -1,7 +1,7 @@
 package ar.edu.unrc.game2048;
 
 import ar.edu.unrc.game2048.strategy.Move;
-import ar.edu.unrc.game2048.strategy.MoveFactory;
+import ar.edu.unrc.game2048.strategy.MoveProvider;
 
 import java.awt.font.TextHitInfo;
 import java.util.*;
@@ -19,7 +19,7 @@ import java.util.*;
  * Thread-safety: This class is not thread-safe.
  */
 public class Board {
-    public MoveFactory moveFactory = new MoveFactory();
+    public MoveProvider moveProvider = new MoveProvider();
     /**
      * Board default number of rows/columns (4 x 4)
      */
@@ -324,7 +324,7 @@ public class Board {
 
     public boolean move(Direction direction) {
         Board previous = new Board(this);
-        Move move = moveFactory.create(direction);
+        Move move = moveProvider.provide(direction);
         move.execute(this, grid, score);
         boolean moved = !this.equals(previous);
         if (moved && !determinist) {
