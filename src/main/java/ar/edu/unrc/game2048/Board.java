@@ -1,10 +1,13 @@
 package ar.edu.unrc.game2048;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
 import ar.edu.unrc.game2048.strategy.Move;
 import ar.edu.unrc.game2048.strategy.MoveProvider;
-
-import java.awt.font.TextHitInfo;
-import java.util.*;
 
 /**
  * Represents the 2048 game board.
@@ -150,7 +153,7 @@ public class Board {
      * @throws IndexOutOfBoundsException if row or col is out of bounds
      */
     public Cell getCell(int row, int col) {
-        validatePosition(row, col);
+        validatePosition(row, col); // ya java analiza el index, por lo tanto si sacamos esta linea, el comportamiento es equivalente
         return grid[row][col];
     }
 
@@ -248,7 +251,7 @@ public class Board {
             for (int c = 0; c < size; c++) {
                 Cell current = grid[r][c];
                 // Check right neighbor
-                if (c + 1 < size - 1 && current.canMergeWith(grid[r][c + 1])) {
+                if (c + 1 < size && current.canMergeWith(grid[r][c + 1])) {
                     return false;
                 }
                 // Check down neighbor
