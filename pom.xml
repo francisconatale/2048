@@ -40,6 +40,20 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Mockito for mocking dependencies -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.github.randoop</groupId>
             <artifactId>randoop</artifactId>
@@ -62,6 +76,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M9</version>
                 <configuration>
+                    <argLine>@{argLine} -XX:+EnableDynamicAgentLoading -Dnet.bytebuddy.experimental=true</argLine>
                     <includes>
                         <include>**/RegressionTest*.java</include>
                         <include>**/ErrorTest*.java</include>
@@ -120,6 +135,10 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <jvmArgs>
+                        <value>-XX:+EnableDynamicAgentLoading</value>
+                        <value>-Dnet.bytebuddy.experimental=true</value>
+                    </jvmArgs>
                     <targetClasses>
                         <param>ar.edu.unrc.game2048.*</param>
                     </targetClasses>

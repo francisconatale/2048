@@ -56,6 +56,7 @@ public class Board {
         this(DEFAULT_SIZE, false);
     }
     private boolean determinist;
+    private java.util.Random random;
 
     /**
      * Creates a new board of the specified size with two random tiles.
@@ -64,12 +65,17 @@ public class Board {
      * @throws IllegalArgumentException if size <= 0
      */
     public Board(int size, boolean determinist) {
+        this(size, determinist, new java.util.Random());
+    }
+
+    public Board(int size, boolean determinist, java.util.Random random) {
         if (size <= 0) {
             throw new IllegalArgumentException("Board size must be positive: " + size);
         }
         this.size = size;
         this.grid = new Cell[size][size];
         this.score = new Score(0);
+        this.random = random != null ? random : new java.util.Random();
         initializeEmpty();
         this.determinist = determinist;
         if(!determinist) {
@@ -78,21 +84,19 @@ public class Board {
         }
     }
 
-    private boolean addRandomTile() {
+    private void addRandomTile() {
         Set<Board.Position> empty = getEmptyPositions();
         if (empty.isEmpty()) {
-            return false;
+            return;
         }
 
         // Choose random positiom
-        int randomIndex = (int) (Math.random() * empty.size());
+        int randomIndex = (int) (random.nextDouble() * empty.size());
         Board.Position pos = empty.stream().skip(randomIndex).findFirst().get();
 
         // 90% chance of 2, 10% chance of 4 (standard 2048 rules)
-        int value = Math.random() < 0.9 ? 2 : 4;
+        int value = random.nextDouble() < 0.9 ? 2 : 4;
         grid[pos.row][pos.col] = new Cell(value);
-
-        return true;
     }
 
     public Cell[][] getGrid(){ return grid; }
@@ -108,6 +112,7 @@ public class Board {
         this.size = other.size;
         this.grid = new Cell[size][size];
         this.score = other.score;
+        this.random = other.random;
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
                 this.grid[r][c] = other.grid[r][c];
