@@ -178,6 +178,21 @@ public void toStringTest() {
 
     assertEquals(expected, board.toString());
 }
+@Test
+public void equalsBoards(){
+    Board board = new Board(2, true);
+    Board other_board = board;
+    assertEquals(board, other_board);
+
+}
+
+@Test
+public void notEqualsClass(){
+    Board board = new Board(2, true);
+    Cell cell = new Cell(2);
+    assertEquals(board.equals(cell), false);
+}
+
 
     @Test
     public void testBoardGetEmptyPositions() {
