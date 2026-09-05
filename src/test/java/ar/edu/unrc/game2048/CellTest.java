@@ -66,4 +66,10 @@ public void testCellNotEquals(){
         int hashOtherCell = otherCell.hashCode();
         assertEquals(hashCell, hashOtherCell);
     }
+    @Test
+    public void testEmptyCellCannotMerge(){
+    Cell cell = new Cell(0);
+    Cell otherCell = new Cell(0);
+    assertFalse(cell.canMergeWith(otherCell));
+    }
 }

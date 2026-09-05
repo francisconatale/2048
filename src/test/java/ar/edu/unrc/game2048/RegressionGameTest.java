@@ -84,14 +84,13 @@ public void EdgeCaseWithOneMergeInLimitCasesCol() {
     @Test
     public void testTryAddTwoRandomTileAndOnlySetOne(){
         String initialBoardToParse =
-                        "16 8 2 0\n" +
-                        "4 2 4 8\n" +
-                        "8 2 4 8\n" +
-                        "4 2 4 8";
-        Board initialBoard = BoardParser.parse(initialBoardToParse, false);
-        initialBoard.move(Board.Direction.RIGHT);
-        assertEquals(initialBoard.isFull(), true);
+                "2 2" + "\n" + "8 2";
+        Board board = BoardParser.parse(initialBoardToParse, false);
+        board.move(Board.Direction.RIGHT);
+        assertEquals(board.isFull(), true);
     }
+
+
     @Test
     public void testTryMoveUpAndNotMoveNumbers(){
         String initialBoardToParse =

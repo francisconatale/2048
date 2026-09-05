@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import java.util.Random;
 
 import ar.edu.unrc.game2048.Board.Direction;
 import ar.edu.unrc.game2048.Board.Position;
@@ -253,6 +255,71 @@ public class BoardTest {
         board.setCell(0,1, new Cell(2));
         int hashCode = board.hashCode();
         assertNotNull(hashCode);
+    }
+
+    @Test
+    public void testAddRandomTileEdgeCaseValue4() {
+        Random mockRandom = Mockito.mock(Random.class);
+        Mockito.when(mockRandom.nextDouble())
+                .thenReturn(0.0)  // Index for first tile
+                .thenReturn(0.1)  // Value for first tile (generates 2)
+                .thenReturn(0.0)  // Index for second tile
+                .thenReturn(0.95); // Value for second tile (generates 4)
+
+        Board board = new Board(4, false, mockRandom);
+        
+        int countFour = 0;
+        int countTwo = 0;
+        
+        for (int i = 0; i < board.getSize(); i++) {
+            for (int j = 0; j < board.getSize(); j++) {
+                if (board.getCell(i, j).getValue() == 4) countFour++;
+                if (board.getCell(i, j).getValue() == 2) countTwo++;
+            }
+        }
+        
+        assertEquals(1, countFour, "Debe haber exactamente un 4");
+        assertEquals(1, countTwo, "Debe haber exactamente un 2");
+    }
+
+    @Test
+    public void testAddRandomTileBoundary() {
+        Random mockRandom = Mockito.mock(Random.class);
+        Mockito.when(mockRandom.nextDouble())
+                .thenReturn(Math.nextDown(1.0))
+                .thenReturn(0.9)  // Boundary value -> should generate 4
+                .thenReturn(0.0)  
+                .thenReturn(0.9); // Boundary value -> should generate 4
+
+        Board board = new Board(4, false, mockRandom);
+        
+        int countFour = 0;
+        for (int i = 0; i < board.getSize(); i++) {
+            for (int j = 0; j < board.getSize(); j++) {
+                if (board.getCell(i, j).getValue() == 4) countFour++;
+            }
+        }
+        assertEquals(2, countFour, "El valor limite 0.9 debe generar 4");
+    }
+
+    @Test
+    public void testAddRandomTileNegatedConditional() {
+        Random mockRandom = Mockito.mock(Random.class);
+        Mockito.when(mockRandom.nextDouble())
+                .thenReturn(0.9) // empty.size() * 1
+                .thenReturn(0.8)  // Should generate 2
+                .thenReturn(0.0)
+                .thenReturn(0.1); // Should generate 2
+
+        Board board = new Board(4, false, mockRandom);
+        
+        int countTwo = 0;
+        for (int i = 0; i < board.getSize(); i++) {
+            for (int j = 0; j < board.getSize(); j++) {
+                if (board.getCell(i, j).getValue() == 2) countTwo++;
+            }
+        }
+        assertEquals(2, countTwo, "Deberia generar solo 2s cuando los valores son menores a 0.9");
     }
 
 }
