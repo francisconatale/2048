@@ -158,7 +158,6 @@ public class Board {
      * @throws IndexOutOfBoundsException if row or col is out of bounds
      */
     public Cell getCell(int row, int col) {
-        validatePosition(row, col); // ya java analiza el index, por lo tanto si sacamos esta linea, el comportamiento es equivalente
         return grid[row][col];
     }
 
@@ -172,29 +171,11 @@ public class Board {
      * @throws IllegalArgumentException if cell is null
      */
     public void setCell(int row, int col, Cell cell) {
-        validatePosition(row, col);
         if (cell == null) {
             throw new IllegalArgumentException("Cell cannot be null");
         }
         grid[row][col] = cell;
     }
-
-    /**
-     * Validates that a position is within bounds.
-     *
-     * @param row the row index
-     * @param col the column index
-     * @throws IndexOutOfBoundsException if the position is out of bounds
-     */
-    public void validatePosition(int row, int col) {
-        if (row < 0 || row >= size || col < 0 || col >= size) {
-            throw new IndexOutOfBoundsException(
-                    String.format("Position (%d, %d) is out of bounds for board size %d",
-                            row, col, size)
-            );
-        }
-    }
-
 
     /**
      * Gets all empty cells on the board.
