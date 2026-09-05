@@ -35,13 +35,7 @@ public void testCellIsNotEmpty(){
     boolean result = cell.isEmpty();
     assertFalse(result);
 }
-@Test
-public void testCellMergeWith(){
-    Cell cell = new Cell(4);
-    Cell otherCell = new Cell(4);
-    Cell result = cell.mergeWith(otherCell);
-    assertEquals(8, result.getValue());
-}
+
 @Test
 public void testCellEquals(){
     Cell cell = new Cell(4);

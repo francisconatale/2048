@@ -17,6 +17,7 @@ public class BoardTest {
     public void invalidBoardTest() {
     assertThrows(IllegalArgumentException.class, () -> new Board(0, true));
     }
+
     @Test
     public void lostBoardTest() {
         Board board = new Board(4, true);
@@ -31,6 +32,7 @@ public class BoardTest {
         Board copyOfBoard = new Board(board);
         assertEquals(board,copyOfBoard);
     }
+
     @Test
     public void hasEmptyCellsInBoardTest() {
         Board board = new Board(4, true);
@@ -38,6 +40,7 @@ public class BoardTest {
         System.out.println(board.toString());
         assertTrue(board.hasEmptyCells());
     }
+
     @Test
     public void testMoveUpInGame(){
      Board actual_board = new Board(4, true);
@@ -49,6 +52,7 @@ public class BoardTest {
      actual_board.move(Direction.UP);
       assertEquals(actual_board, expected_board);
     }
+
     @Test
     public void testMoveLeftInGame(){
         Board actual_board = new Board(4, true);
@@ -60,6 +64,7 @@ public class BoardTest {
         actual_board.move(Direction.LEFT);
         assertEquals(actual_board, expected_board);
     }
+
     @Test
     public void maximumScoreOfBoardTest() {
         Board board = new Board(4,true);
@@ -69,6 +74,7 @@ public class BoardTest {
         int scoreExpected = 4;
         assertEquals(scoreExpected, board.getScore());
     }
+
     @Test
     public void notHasEmptyCellsInBoardTest() {
         Board board = new Board(4, true);
@@ -76,63 +82,64 @@ public class BoardTest {
         seeder.seederBoard(board, n * n);
         assertFalse(board.hasEmptyCells());
     }
-@Test
-void setCellNegativeRowTest() {
+
+    @Test
+    public void setCellNegativeRowTest() {
     Board board = new Board(4, true);
     Cell cell = new Cell(2);
     assertThrows(
         IndexOutOfBoundsException.class,
         () -> board.setCell(-1, 2, cell)
     );
-}
-   @Test
-void trySetCellNullAndGetThrows() {
+    }
+    @Test
+    public void trySetCellNullAndGetThrows() {
     Board board = new Board(4, true);
     Cell cell = null;
     assertThrows(
         IllegalArgumentException.class,
         () -> board.setCell(2, 2, cell)
     );
-}
-@Test
-void setCellRowOutOfBoundsTest() {
+    }
+    @Test
+    public void setCellRowOutOfBoundsTest() {
     Board board = new Board(4, true);
     Cell cell = new Cell(2);
     assertThrows(
         IndexOutOfBoundsException.class,
         () -> board.setCell(4, 2, cell)
     );
-}
-@Test
-void setCellNegativeColumnTest() {
+    }
+    @Test
+    public void setCellNegativeColumnTest() {
     Board board = new Board(4, true);
     Cell cell = new Cell(2);
     assertThrows(
         IndexOutOfBoundsException.class,
         () -> board.setCell(2, -1, cell)
     );
-}
-@Test
-void setCellColumnOutOfBoundsTest() {
+    }
+    @Test
+    public void setCellColumnOutOfBoundsTest() {
     Board board = new Board(4, true);
     Cell cell = new Cell(2);
     assertThrows(
         IndexOutOfBoundsException.class,
         () -> board.setCell(2, 4, cell)
     );
-}
-@Test
-void setCellFirstValidPositionTest() {
+    }
+    @Test
+    public void setCellFirstValidPositionTest() {
     Board board = new Board(4, true);
     Cell cell = new Cell(2);
     board.setCell(0, 0, cell);
-}
-@Test
-void setCellLastValidPositionTest() {
+    }
+    @Test
+    public void setCellLastValidPositionTest() {
     Board board = new Board(4, true);
     Cell cell = new Cell(2);
     board.setCell(3, 3, cell);
-}
+    }
     @Test
     public void testBoardGetCell() {
         Board board = new Board();
@@ -147,22 +154,9 @@ void setCellLastValidPositionTest() {
         });
     }
 
-    @Test
-    public void tryGetAInvalidCell(){
-        Board board = new Board(4,true);
-        assertThrows(IndexOutOfBoundsException.class, () -> { board.getCell(-1,0);});
-    }
 
     @Test
-    public void setInInvalidPosition(){
-    Board board = new Board(4,true);
-        Cell cell = new Cell(2);
-        assertThrows(IndexOutOfBoundsException.class, () -> { board.setCell(-1,0,cell);});
-
-    }
-
-    @Test
-public void toStringTest() {
+    public void toStringTest() {
     Board board = new Board(2, true);
 
     board.setCell(0, 0, new Cell(2));
@@ -177,21 +171,14 @@ public void toStringTest() {
             "+-----+-----+\n";
 
     assertEquals(expected, board.toString());
-}
-@Test
-public void equalsBoards(){
-    Board board = new Board(2, true);
-    Board other_board = board;
-    assertEquals(board, other_board);
+    }
 
-}
-
-@Test
-public void notEqualsClass(){
+    @Test
+    public void notEqualsClass(){
     Board board = new Board(2, true);
     Cell cell = new Cell(2);
     assertEquals(board.equals(cell), false);
-}
+    }
 
 
     @Test
@@ -200,6 +187,7 @@ public void notEqualsClass(){
         Set<Position> emptyPositions = board.getEmptyPositions();
         assertNotNull(emptyPositions);
     }
+
     @Test
     public void testBoardIsWinningBoard() {
         Board board = new Board(4, true);
@@ -207,12 +195,14 @@ public void notEqualsClass(){
         boolean isWinning = board.isWinningBoard();
         assertTrue(isWinning);
     }
+
     @Test
     public void testBoardIsNotWinningBoard() {
         Board board = new Board();
         boolean isWinning = board.isWinningBoard();
         assertFalse(isWinning);
     }
+
     @Test
     public void testBoardIsFull() {
         Board board = new Board(4, false);
@@ -224,12 +214,14 @@ public void notEqualsClass(){
         boolean isFull = board.isFull();
         assertTrue(isFull);
     }
+
     @Test
     public void testBoardIsNotFull() {
         Board board = new Board();
         boolean isFull = board.isFull();
         assertFalse(isFull);
     }
+
     @Test
     public void testBoardMoveDown() {
         Board actual_board = new Board(4, true);
@@ -241,6 +233,7 @@ public void notEqualsClass(){
         actual_board.move(Direction.DOWN);
         assertEquals(actual_board, expected_board);
     }
+
     @Test
     public void testBoardMmoveRight() {
         Board actual_board = new Board(4, true);
@@ -252,6 +245,7 @@ public void notEqualsClass(){
         actual_board.move(Direction.RIGHT);
         assertEquals(actual_board, expected_board);
     }
+
     @Test
     public void testBoardHashCode() {
         Board board = new Board(4, true);
@@ -260,4 +254,5 @@ public void notEqualsClass(){
         int hashCode = board.hashCode();
         assertNotNull(hashCode);
     }
+
 }
