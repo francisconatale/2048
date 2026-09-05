@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Score.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package ar.edu.unrc.game2048;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Score {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    int score;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Score(int value){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.score = value;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_9'/>
+9
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_9'>1</a>
+<span>
+1. increaseScore : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public void increaseScore(int value){ score += value; }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public void setScore(int value){ score = value;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_11'/>
+11
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_11'>1</a>
+<span>
+1. getScore : replaced int return with 0 for ar/edu/unrc/game2048/Score::getScore &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public int getScore(){ return score;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67fd2e17_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67fd2e17_9'>9</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_9'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>increaseScore<br/><b>Killed by : </b>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:testMoveLeftInGame()]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67fd2e17_11'>11</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67fd2e17_11'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getScore<br/><b>Killed by : </b>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:maximumScoreOfBoardTest()]</span></span> replaced int return with 0 for ar/edu/unrc/game2048/Score::getScore &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:testMoveLeftInGame()] (0 ms)</li><li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:testMoveUpInGame()] (0 ms)</li><li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:testBoardMoveDown()] (1 ms)</li><li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:maximumScoreOfBoardTest()] (2 ms)</li><li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:testBoardMmoveRight()] (2 ms)</li><li>ar.edu.unrc.game2048.RegressionGameTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.RegressionGameTest]/[method:regressionTestTwoInMoveDownWithBoardNotTrivial()] (1 ms)</li><li>ar.edu.unrc.game2048.RegressionGameTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.RegressionGameTest]/[method:regressionTestInMoveUpWithBoardNotTrivial()] (1 ms)</li><li>ar.edu.unrc.game2048.RegressionGameTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.RegressionGameTest]/[method:regressionTestInMoveDownWithBoardNotTrivial()] (1 ms)</li><li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:toStringTest()] (1 ms)</li><li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:hasEmptyCellsInBoardTest()] (0 ms)</li><li>ar.edu.unrc.game2048.RegressionGameTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.RegressionGameTest]/[method:testTryMoveUpAndNotMoveNumbers2()] (1 ms)</li><li>ar.edu.unrc.game2048.RegressionGameTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.RegressionGameTest]/[method:testTryMoveUpAndNotMoveNumbers()] (3 ms)</li><li>ar.edu.unrc.game2048.RegressionGameTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.RegressionGameTest]/[method:testTryAddTwoRandomTileAndOnlySetOne()] (1 ms)</li><li>ar.edu.unrc.game2048.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.BoardTest]/[method:copyABoardTest()] (34 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.15.0
+
+</body>
+</html>
